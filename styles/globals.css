@@ -2,4 +2,11 @@
 
 :root {
   font-family: "Montserrat", sans-serif;
+  color: var(--font-dark);
+  /* Branding colors
+     Primary */
+  --light-gray: #eeeeee;
+  --dark-gray: #686868;
+  --font-light: white;
+  --font-dark: black;
 }

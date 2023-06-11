@@ -35,7 +35,6 @@ const StyledCard = styled.div`
 `
 
 const Card = ({ title, author, description, imageUrl }) => {
-  console.log(title.length)
   return (
     <StyledCard>
       <img src="https://muzikercdn.com/uploads/products/3733/373389/db176545.jpg" />

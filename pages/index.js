@@ -1,7 +1,36 @@
+import { useEffect } from "react"
+import spotify from "@/utils/getToken"
 import CardContainer from "@/components/layouts/CardContainer"
 import Card from "components/Card"
 
-const Demo = () => {
+const Demo = (props) => {
+  // const testFetch = async () => {
+  //   let spotifyToken = await axios
+  //     .post("https://accounts.spotify.com/api/token", {
+  //       headers: {
+  //         "Content-Type": "application/x-www-form-urlencoded",
+  //         Authorization:
+  //           "Basic " +
+  //           new Buffer.from(
+  //             process.env.SPOTIFY_CLIENT_ID +
+  //               ":" +
+  //               process.env.SPOTIFY_CLIENT_SECRET
+  //           ).toString("base64"),
+  //       },
+  //     })
+  //     .then((res) => console.log(res))
+  //     .catch((err) => console.log(err))
+  //   return console.log(spotifyToken)
+  // }
+
+  useEffect(() => {
+    // console.log(
+    //   "testing environment variable: ",
+    //   process.env.NEXT_PUBLIC_VAR_TEST
+    // )
+    // testFetch()
+    // console.log(props.data)
+  })
   return (
     <div>
       <header>
@@ -42,4 +71,15 @@ const Demo = () => {
     </div>
   )
 }
+
+export async function getStaticProps() {
+  let spotifyToken = await spotify()
+  console.log(spotifyToken)
+  return {
+    props: {
+      data: "some data will go here",
+    },
+  }
+}
+
 export default Demo

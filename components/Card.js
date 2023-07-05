@@ -34,10 +34,10 @@ const StyledCard = styled.div`
   }
 `
 
-const Card = ({ title, author, description, imageUrl }) => {
+const Card = ({ title, author, imageURL }) => {
   return (
     <StyledCard>
-      <img src="https://muzikercdn.com/uploads/products/3733/373389/db176545.jpg" />
+      <img src={imageURL} />
       <div className="card-info">
         <h3>{`${
           title.length > 20 ? title.substring(0, 20) + "..." : title

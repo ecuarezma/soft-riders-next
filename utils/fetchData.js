@@ -29,17 +29,21 @@ export default async function fetchData(
   fetchedData = [],
   page = 1
 ) {
-  console.log(`Fetching data from ${api}, page ${page}`)
-  api = api.toLowerCase()
-  let configs = await getConfigs(api, nextURL)
-  let { data } = await axios(...configs)
+  try {
+    console.log(`Fetching data from ${api}, page ${page}`)
+    api = api.toLowerCase()
+    let configs = await getConfigs(api, nextURL)
+    let { data } = await axios(...configs)
 
-  nextURL = data.next || data.paging?.next
+    nextURL = data.next || data.paging?.next
 
-  let apiData = data.items || data.data
-  fetchedData.push(...apiData)
+    let apiData = data.items || data.data
+    fetchedData.push(...apiData)
 
-  if (nextURL) return fetchData(api, nextURL, fetchedData, (page += 1))
-  console.log("Fetching complete!")
-  return fetchedData
+    if (nextURL) return fetchData(api, nextURL, fetchedData, (page += 1))
+    console.log("Fetching complete!")
+    return fetchedData
+  } catch (error) {
+    console.error(error.message)
+  }
 }

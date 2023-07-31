@@ -35,14 +35,14 @@ const Demo = (props) => {
 }
 
 export async function getStaticProps() {
-  // const spotifyData = await fetchData("spotify")
-  const vimeoData = await fetchData("vimeo")
-  console.log("pulled data from index", vimeoData)
+  const spotifyData = await fetchData("spotify")
+  // const vimeoData = await fetchData("vimeo")
 
   return {
     props: {
-      data: vimeoData,
+      data: { ...spotifyData },
     },
+    revalidate: 30,
   }
 }
 
